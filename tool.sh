@@ -1,5 +1,5 @@
 #!/bin/bash
-REMOTE=""
+REMOTE="taind@35.199.52.214"
 DEPLOY=".deploy"
 APP="$DEPLOY/app.tar"
 STOP_FILE="$DEPLOY/stop.sh"
@@ -7,6 +7,7 @@ SETUP_FILE="$DEPLOY/setup.sh"
 DEPLOY_FILE="$DEPLOY/deploy.sh"
 START_FILE="$DEPLOY/start.sh"
 LOGS_FILE="$DEPLOY/logs.sh"
+LINK_FILE="$DEPLOY/link.sh"
 NGINX_CONF="$DEPLOY/nginx.conf"
 NODE_MODULES="node_modules"
 GIT=".git"
@@ -40,6 +41,10 @@ case $1 in
   logs)
     echo "=> Logs"
     ssh $REMOTE "bash -s" < $LOGS_FILE
+    ;;
+  link)
+    echo "=> Link"
+    ssh $REMOTE "bash -s" < $LINK_FILE
     ;;
   *)
     echo "deploy NodeJS application"
