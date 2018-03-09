@@ -27,6 +27,14 @@ case $1 in
     ssh $REMOTE "bash -s" < $DEPLOY_FILE
     ;;
   *)
-    echo "FUCK"
+    echo "deploy NodeJS application"
+    echo "usage:"
+    echo ""
+    echo "  ./tool.sh [command]"
+    echo ""
+    echo "commands:"
+    echo ""
+    echo "  s : setup"
+    echo "  d : deploy"
     ;;
 esac
