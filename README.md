@@ -7,7 +7,11 @@ Go into your project folder
 git clone git@github.com:duytai/simple-deploy.git .deploy
 cd .deploy
 ```
-Add remote server to `tool.sh` file by editing `REMOTE` variable and edit `port number` in nginx.conf 
+## Configuration
+- Add remote server to `tool.sh`
+- Edit forward port in `nginx.conf`
+- Add startup script to `start` in `package.json`
+- Edit scripts when you want co customize
 
 ## Deployment:
 ```bash
