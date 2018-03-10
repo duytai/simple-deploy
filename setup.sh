@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "..install nvm"
-wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh >> /dev/null 
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash >> /dev/null 2>&1
 source ~/.nvm/nvm.sh >> /dev/null 2>&1
 NVM_VERSION="$(nvm --version)"
 echo "..${NVM_VERSION}"

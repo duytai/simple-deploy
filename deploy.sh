@@ -2,6 +2,9 @@
 source ~/.nvm/nvm.sh >> /dev/null 2>&1
 pm2 delete all >> /dev/null 2>&1
 echo "..untar"
+if [ ! -d app/ ] ; then
+  mkdir app/
+fi
 tar -xvf app.tar -C app/ >> /dev/null 2>&1
 rm app.tar
 cd app/
