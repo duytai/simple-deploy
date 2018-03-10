@@ -1,5 +1,5 @@
 #!/bin/bash
-REMOTE="taind@35.199.52.214"
+REMOTE="taind@35.194.94.94"
 DEPLOY=".deploy"
 APP="$DEPLOY/app.tar"
 STOP_FILE="$DEPLOY/stop.sh"
@@ -8,7 +8,9 @@ DEPLOY_FILE="$DEPLOY/deploy.sh"
 START_FILE="$DEPLOY/start.sh"
 LOGS_FILE="$DEPLOY/logs.sh"
 LINK_FILE="$DEPLOY/link.sh"
+MONGO_FILE="$DEPLOY/mongo.sh"
 NGINX_CONF="$DEPLOY/nginx.conf"
+MONGOD_CONF="$DEPLOY/mongod.conf"
 NODE_MODULES="node_modules"
 GIT=".git"
 
@@ -46,6 +48,12 @@ case $1 in
     echo "=> Link"
     ssh $REMOTE "bash -s" < $LINK_FILE
     ;;
+  mongo)
+    echo "=> Setup mongo"
+    echo "..upload mongod.conf"
+    scp $MONGOD_CONF $REMOTE:~/ >> /dev/null 2>&1
+    ssh $REMOTE "bash -s" < $MONGO_FILE
+    ;;
   *)
     echo "deploy NodeJS application"
     echo "usage:"
@@ -59,5 +67,6 @@ case $1 in
     echo "  start  : start application"
     echo "  stop   : stop application"
     echo "  logs   : show logs"
+    echo "  mongo  : setup mongo"
     ;;
 esac
